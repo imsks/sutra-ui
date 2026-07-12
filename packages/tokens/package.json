@@ -1,6 +1,6 @@
 {
   "name": "@sutra/tokens",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Framework-agnostic design tokens for the Sutra design system: TypeScript constants, CSS variables, and a Tailwind preset.",
   "license": "MIT",
   "type": "module",

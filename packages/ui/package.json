@@ -1,6 +1,6 @@
 {
   "name": "@sutra/ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Accessible, TypeScript-first React component library for the Sutra design system.",
   "license": "MIT",
   "type": "module",
