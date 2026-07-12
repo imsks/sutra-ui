@@ -5,10 +5,11 @@ export default tseslint.config(
   {
     ignores: [
       "**/dist/**",
+      "**/build/**",
       "**/coverage/**",
       "**/.turbo/**",
       "**/node_modules/**",
-      "**/.ladle/**",
+      "**/.ladle/build/**",
       "packages/tokens/src/css/variables.css",
     ],
   },
