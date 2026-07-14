@@ -23,6 +23,33 @@ function renderBlock(selector: string, vars: Record<string, string>, lead: strin
   return `${selector} {\n${decls}\n}`;
 }
 
+/**
+ * Motion primitives that ship with the token CSS so framework-agnostic
+ * consumers (and the `@sutra/ui` Skeleton `animation="shimmer"`) get the
+ * keyframe without any build step. Respects reduced-motion preferences.
+ */
+const MOTION = `@keyframes sutra-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.sutra-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--sutra-color-surface-muted) 0%,
+    var(--sutra-color-surface-subtle) 50%,
+    var(--sutra-color-surface-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: sutra-shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sutra-shimmer {
+    animation: none;
+  }
+}`;
+
 function renderCss(): string {
   return [
     HEADER,
@@ -30,6 +57,8 @@ function renderCss(): string {
     renderBlock(":root", rootVars, ["color-scheme: light;"]),
     "",
     renderBlock(".dark", darkVars, ["color-scheme: dark;"]),
+    "",
+    MOTION,
     "",
   ].join("\n");
 }

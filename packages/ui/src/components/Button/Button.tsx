@@ -1,6 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 
 import { cn } from "../../lib/cn";
+import { Spinner } from "../Spinner";
 import { button, type ButtonVariants } from "./Button.variants";
 
 /** Props for {@link Button}. */
@@ -45,10 +46,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {...props}
     >
       {isLoading ? (
-        <span
-          className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent"
-          aria-hidden="true"
-        />
+        <Spinner size="sm" />
       ) : leftIcon ? (
         <span className="inline-flex shrink-0" aria-hidden="true">
           {leftIcon}

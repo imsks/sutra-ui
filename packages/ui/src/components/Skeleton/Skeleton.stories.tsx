@@ -26,3 +26,12 @@ export const CardPlaceholder: Story = () => (
 
 /** Rectangular block. */
 export const Rect: Story = () => <Skeleton width={280} height={120} />;
+
+/** The three animation styles side by side. */
+export const Animations: Story = () => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 320 }}>
+    <Skeleton animation="pulse" width="100%" height={40} />
+    <Skeleton animation="shimmer" width="100%" height={40} />
+    <Skeleton animation="none" width="100%" height={40} />
+  </div>
+);

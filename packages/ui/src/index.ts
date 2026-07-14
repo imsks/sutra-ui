@@ -10,12 +10,25 @@
 
 export { cn } from "./lib/cn";
 export { tv, type VariantProps } from "./lib/variants";
+export { Slot, type SlotProps } from "./lib/slot";
 
 export { Button, type ButtonProps, button, type ButtonVariants } from "./components/Button";
 export { Card, type CardProps, card, type CardVariants } from "./components/Card";
 export { Badge, type BadgeProps, badge, type BadgeVariants } from "./components/Badge";
 export { Avatar, type AvatarProps, avatar, type AvatarVariants } from "./components/Avatar";
 export { Skeleton, type SkeletonProps, skeleton, type SkeletonVariants } from "./components/Skeleton";
+export { Text, type TextProps, text, type TextVariants } from "./components/Text";
+export { Link, type LinkProps, link, type LinkVariants } from "./components/Link";
+export { Spinner, type SpinnerProps, spinner, type SpinnerVariants } from "./components/Spinner";
+export {
+  ThemeProvider,
+  useTheme,
+  type ThemeProviderProps,
+  type Theme,
+  type ResolvedTheme,
+  ThemeToggle,
+  type ThemeToggleProps,
+} from "./components/Theme";
 
 export {
   Field,

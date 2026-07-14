@@ -29,6 +29,18 @@ describe("Skeleton", () => {
     expect(screen.getByRole("status", { name: "Loading avatar" })).toBeInTheDocument();
   });
 
+  it("pulses by default", () => {
+    const { container } = render(<Skeleton width={100} height={20} />);
+    expect((container.firstElementChild as HTMLElement).className).toContain("animate-pulse");
+  });
+
+  it("uses the shimmer class when animation=shimmer", () => {
+    const { container } = render(<Skeleton animation="shimmer" width={100} height={20} />);
+    const el = container.firstElementChild as HTMLElement;
+    expect(el.className).toContain("sutra-shimmer");
+    expect(el.className).not.toContain("animate-pulse");
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(<Skeleton label="Loading" width={100} height={20} />);
     expect(await axe(container)).toHaveNoViolations();

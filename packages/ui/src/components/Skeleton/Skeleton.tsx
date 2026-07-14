@@ -23,9 +23,10 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement>, SkeletonV
  * @example
  * <Skeleton variant="text" width="60%" />
  * <Skeleton variant="circle" width={40} height={40} label="Loading avatar" />
+ * <Skeleton animation="shimmer" width="100%" height={120} />
  */
 export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(function Skeleton(
-  { className, variant, width, height, label, style, ...props },
+  { className, variant, animation, width, height, label, style, ...props },
   ref,
 ) {
   const resolved: CSSProperties = {
@@ -37,7 +38,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(function Skele
   return (
     <div
       ref={ref}
-      className={cn(skeleton({ variant }), className)}
+      className={cn(skeleton({ variant, animation }), className)}
       style={resolved}
       role={label ? "status" : undefined}
       aria-label={label}

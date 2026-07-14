@@ -167,3 +167,25 @@
   --sutra-color-info-subtle: #0f1e33;
   --sutra-color-info-subtle-content: #dbeafe;
 }
+
+@keyframes sutra-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.sutra-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--sutra-color-surface-muted) 0%,
+    var(--sutra-color-surface-subtle) 50%,
+    var(--sutra-color-surface-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: sutra-shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sutra-shimmer {
+    animation: none;
+  }
+}
