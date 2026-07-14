@@ -1,4 +1,4 @@
-import "@sutra/tokens/css";
+import "@sutra_ui/tokens/css";
 import "../src/styles/theme.css";
 
 import { type GlobalProvider, ThemeState, useLadleContext } from "@ladle/react";

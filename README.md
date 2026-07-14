@@ -11,8 +11,8 @@ Hindi + English typography. Zero runtime CSS-in-JS.
 
 | Package                        | Description                                                                        |
 | ------------------------------ | ---------------------------------------------------------------------------------- |
-| [`@sutra/tokens`](packages/tokens) | Design tokens as TypeScript constants, CSS variables, and a Tailwind v4 preset. No React. |
-| [`@sutra/ui`](packages/ui)         | React component library + curated icon set (`@sutra/ui/icons`). Depends on tokens. |
+| [`@sutra_ui/tokens`](packages/tokens) | Design tokens as TypeScript constants, CSS variables, and a Tailwind v4 preset. No React. |
+| [`@sutra_ui/ui`](packages/ui)         | React component library + curated icon set (`@sutra_ui/ui/icons`). Depends on tokens. |
 
 ## Design language
 
@@ -28,15 +28,15 @@ matter more than playfulness** — editorial, restrained, high-legibility. Newsr
 ## Quick start (consuming Sutra)
 
 ```bash
-pnpm add @sutra/ui @sutra/tokens
+pnpm add @sutra_ui/ui @sutra_ui/tokens
 ```
 
 ```tsx
 // 1. Import the token CSS variables once, at your app root.
-import "@sutra/tokens/css";
+import "@sutra_ui/tokens/css";
 
 // 2. Use components.
-import { Button } from "@sutra/ui";
+import { Button } from "@sutra_ui/ui";
 
 export function Example() {
   return <Button variant="primary">नमस्ते / Hello</Button>;
@@ -45,7 +45,7 @@ export function Example() {
 
 ```ts
 // tailwind: extend with the Sutra preset (Tailwind v4)
-import { sutraPreset } from "@sutra/tokens/tailwind";
+import { sutraPreset } from "@sutra_ui/tokens/tailwind";
 ```
 
 Dark mode: add the `dark` class to a root element (`<html class="dark">`); every token flips via
@@ -61,7 +61,7 @@ pnpm build          # build all packages (tsup)
 pnpm test           # run all tests (Vitest + Testing Library + jest-axe)
 pnpm lint           # eslint
 pnpm typecheck      # tsc --noEmit across packages
-pnpm --filter @sutra/ui ladle:dev   # visual component docs (Ladle)
+pnpm --filter @sutra_ui/ui ladle:dev   # visual component docs (Ladle)
 ```
 
 ## Contributing

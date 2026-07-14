@@ -5,7 +5,7 @@
  *
  * @example
  * // tailwind.config.ts
- * import { sutraPreset } from "@sutra/tokens/tailwind";
+ * import { sutraPreset } from "@sutra_ui/tokens/tailwind";
  * export default { presets: [sutraPreset], content: ["./src/**\/*.{ts,tsx}"] };
  */
 

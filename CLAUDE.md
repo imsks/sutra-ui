@@ -9,12 +9,12 @@ When they disagree, CONTRIBUTING.md wins.
 Sutra is the shared, open-source design system behind civic-tech and news products (e.g. Rajniti).
 It ships two packages from a pnpm + Turborepo monorepo:
 
-- **`@sutra/tokens`** — framework-agnostic design tokens. TypeScript constants are the single source
+- **`@sutra_ui/tokens`** — framework-agnostic design tokens. TypeScript constants are the single source
   of truth; they generate `variables.css` (`--sutra-*` CSS variables) and a Tailwind v4 preset. No React.
-- **`@sutra/ui`** — accessible, TypeScript-first React components + icons (`@sutra/ui/icons`). Depends
-  on `@sutra/tokens`. Styling is Tailwind utilities bound to token variables via `tailwind-variants`.
+- **`@sutra_ui/ui`** — accessible, TypeScript-first React components + icons (`@sutra_ui/ui/icons`). Depends
+  on `@sutra_ui/tokens`. Styling is Tailwind utilities bound to token variables via `tailwind-variants`.
 
-Products consume the published npm packages, import `@sutra/tokens/css` once at the app root, and
+Products consume the published npm packages, import `@sutra_ui/tokens/css` once at the app root, and
 re-skin Sutra by **overriding token CSS variables** (notably the themeable `--sutra-color-accent-*`
 and `--sutra-font-*`). Never hardcode a product's brand color inside a component.
 
@@ -23,15 +23,15 @@ and `--sutra-font-*`). Never hardcode a product's brand color inside a component
 ```
 sutra-ui/
 ├── packages/
-│   ├── tokens/                      # @sutra/tokens
+│   ├── tokens/                      # @sutra_ui/tokens
 │   │   └── src/
 │   │       ├── scripts/generate-css.ts  # gen:css — TS tokens → variables.css
 │   │       └── css/variables.css        # GENERATED, do not hand-edit
-│   └── ui/                          # @sutra/ui
+│   └── ui/                          # @sutra_ui/ui
 │       └── src/
 │           ├── index.ts                 # public barrel — every export lives here
 │           ├── lib/                     # cn, tv/variants, Slot (asChild)
-│           ├── icons/                   # @sutra/ui/icons subpath
+│           ├── icons/                   # @sutra_ui/ui/icons subpath
 │           └── components/<Name>/       # one folder per component (5-file convention)
 ├── .changeset/                      # one changeset per user-facing change
 ├── .claude/skills/sutra-component/  # scaffolding skill (mirrored to .agents/skills)
@@ -48,9 +48,9 @@ pnpm lint                            # eslint
 pnpm typecheck                       # tsc --noEmit
 pnpm format                          # prettier --write
 pnpm changeset                       # record a user-facing change (pick package + semver bump)
-pnpm --filter @sutra/ui ladle:dev    # visual component docs
-pnpm --filter @sutra/ui ladle:build  # build static docs
-pnpm --filter @sutra/tokens gen:css  # regenerate token CSS after editing token TS
+pnpm --filter @sutra_ui/ui ladle:dev    # visual component docs
+pnpm --filter @sutra_ui/ui ladle:build  # build static docs
+pnpm --filter @sutra_ui/tokens gen:css  # regenerate token CSS after editing token TS
 ```
 
 Before finishing any change, the gate is: **`pnpm build && pnpm test && pnpm lint && pnpm typecheck`
@@ -89,7 +89,7 @@ After creating the folder, **add the exports to `packages/ui/src/index.ts`** and
 ## Token workflow
 
 Tokens are the source of truth. Edit the TypeScript constants under `packages/tokens/src/`, then run
-`pnpm --filter @sutra/tokens gen:css`. **Do not hand-edit `variables.css`** — it is generated, and a
+`pnpm --filter @sutra_ui/tokens gen:css`. **Do not hand-edit `variables.css`** — it is generated, and a
 contract test fails on TS ↔ CSS drift. Commit the regenerated CSS with the token change.
 
 ## Adding a component, the fast way

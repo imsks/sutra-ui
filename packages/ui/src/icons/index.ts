@@ -1,15 +1,15 @@
 /**
  * Curated icon set for Sutra, re-exported from `lucide-react` under
- * `@sutra/ui/icons`. Icons keep lucide's API (`size`, `color`,
+ * `@sutra_ui/ui/icons`. Icons keep lucide's API (`size`, `color`,
  * `strokeWidth`, `className`) and inherit `currentColor`, so they adopt Sutra
  * text color and token classes automatically.
  *
  * This is a deliberately small, product-relevant selection (civic + news). A
- * standalone `@sutra/icons` package is a v0.1+ roadmap item; import paths here
+ * standalone `@sutra_ui/icons` package is a v0.1+ roadmap item; import paths here
  * are chosen to stay stable through that extraction.
  *
  * @example
- * import { Search, Check, Spinner } from "@sutra/ui/icons";
+ * import { Search, Check, Spinner } from "@sutra_ui/ui/icons";
  * <Search className="size-4 text-content-muted" aria-hidden />
  */
 

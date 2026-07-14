@@ -156,7 +156,7 @@ export { Sample, type SampleProps, sample, type SampleVariants } from "./compone
 
 ```md
 ---
-"@sutra/ui": minor
+"@sutra_ui/ui": minor
 ---
 
 Add `Sample` primitive.

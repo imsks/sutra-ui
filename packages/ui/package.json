@@ -1,5 +1,5 @@
 {
-  "name": "@sutra/ui",
+  "name": "@sutra_ui/ui",
   "version": "0.0.1",
   "description": "Accessible, TypeScript-first React component library for the Sutra design system.",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "ladle:build": "ladle build"
   },
   "dependencies": {
-    "@sutra/tokens": "workspace:*",
+    "@sutra_ui/tokens": "workspace:*",
     "clsx": "^2.1.1",
     "lucide-react": "^1.24.0",
     "tailwind-merge": "^2.6.0",

@@ -1,8 +1,8 @@
-import { sutraPreset } from "@sutra/tokens/tailwind";
+import { sutraPreset } from "@sutra_ui/tokens/tailwind";
 
 /**
  * Tailwind config for the Sutra component library (and its Ladle docs). It loads
- * the shared `@sutra/tokens` preset so every product renders identical utilities.
+ * the shared `@sutra_ui/tokens` preset so every product renders identical utilities.
  */
 export default {
   presets: [sutraPreset],

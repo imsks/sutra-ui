@@ -53,7 +53,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@sutra/tokens':
+      '@sutra_ui/tokens':
         specifier: workspace:*
         version: link:../tokens
       clsx:

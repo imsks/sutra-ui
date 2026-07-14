@@ -1,11 +1,11 @@
 /**
- * `@sutra/ui` — the Sutra React component library.
+ * `@sutra_ui/ui` — the Sutra React component library.
  *
  * The published bundle is marked as a client boundary ("use client") by the
  * build; see scripts/prepend-use-client.mjs.
  *
- * Import token styles once at your app root: `import "@sutra/tokens/css";`
- * Icons live at `@sutra/ui/icons`.
+ * Import token styles once at your app root: `import "@sutra_ui/tokens/css";`
+ * Icons live at `@sutra_ui/ui/icons`.
  */
 
 export { cn } from "./lib/cn";
