@@ -87,8 +87,33 @@ pnpm test
 pnpm changeset
 ```
 
-Choose the affected packages and a semver bump, and describe the change. Maintainers run
-`pnpm version-packages` and `pnpm release` to publish.
+Choose the affected packages and a semver bump, and describe the change.
+
+**`production` is the release branch.** Landing work there is what publishes `@sutra_ui/tokens`
+and `@sutra_ui/ui` to npm:
+
+1. Open a PR into `production` (typically from `main` or a feature branch) that includes the
+   changeset files.
+2. CI runs `pnpm build && pnpm test && pnpm lint && pnpm typecheck`.
+3. On merge, the Release workflow opens (or updates) a **Version Packages** PR that bumps versions
+   and changelogs.
+4. Merge that Version Packages PR into `production`. The same workflow then runs `pnpm release`
+   (`changeset publish`) and creates GitHub releases.
+
+Manual publish is still available if needed: `pnpm version-packages` then `pnpm release`.
+
+### npm auth for CI
+
+Configure one of:
+
+- **Trusted Publishing (preferred):** on npm, add a trusted publisher for `@sutra_ui/tokens` and
+  `@sutra_ui/ui` bound to this GitHub repo and the `release.yml` workflow. The job already requests
+  `id-token: write`.
+- **Fallback:** store a granular `NPM_TOKEN` (publish access to `@sutra_ui/*`) as a GitHub Actions
+  secret named `NPM_TOKEN`.
+
+In repo **Settings → Actions → General**, enable **Allow GitHub Actions to create and approve pull
+requests** so the Version Packages PR can be opened.
 
 ## Code of conduct
 

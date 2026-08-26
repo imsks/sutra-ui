@@ -1,0 +1,77 @@
+# Publishes @sutra_ui/tokens and @sutra_ui/ui when production is updated.
+#
+# Flow (changesets/action):
+# 1. Merge to `production` with pending `.changeset/*.md` files → opens/updates a
+#    "Version Packages" PR (bumps versions + changelogs).
+# 2. Merge that PR into `production` → this workflow runs `pnpm release`,
+#    which builds and `changeset publish`es any unpublished versions to npm.
+#
+# Auth: prefer npm Trusted Publishing (OIDC) for this workflow. Optionally set
+# repo secret NPM_TOKEN as a fallback for the first publish or if OIDC is not
+# configured yet. See CONTRIBUTING.md.
+
+name: Release
+
+on:
+  push:
+    branches: [production]
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+env:
+  CI: true
+  NODE_VERSION: "22"
+
+jobs:
+  release:
+    name: Version or publish to npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Quality gate
+        run: pnpm build && pnpm test && pnpm lint && pnpm typecheck
+
+      - name: Configure npm token auth
+        run: |
+          if [ -n "${NPM_TOKEN}" ]; then
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> "$HOME/.npmrc"
+          fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Version PR or publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          version: pnpm version-packages
+          title: "chore: version packages"
+          commit: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"

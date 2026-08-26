@@ -33,6 +33,7 @@ sutra-ui/
 │           ├── lib/                     # cn, tv/variants, Slot (asChild)
 │           ├── icons/                   # @sutra_ui/ui/icons subpath
 │           └── components/<Name>/       # one folder per component (5-file convention)
+├── .github/workflows/               # CI on PRs; Release publishes to npm from production
 ├── .changeset/                      # one changeset per user-facing change
 ├── .claude/skills/sutra-component/  # scaffolding skill (mirrored to .agents/skills)
 └── CLAUDE.md / CONTRIBUTING.md / README.md / ROADMAP.md
@@ -43,7 +44,7 @@ sutra-ui/
 ```bash
 pnpm install                         # bootstrap
 pnpm build                           # build all packages (turbo)
-pnpm test                            # all vitest suites (includes jest-axe + token drift test)
+pnpm test                            # all vitest suites + workflow contract tests
 pnpm lint                            # eslint
 pnpm typecheck                       # tsc --noEmit
 pnpm format                          # prettier --write
@@ -102,8 +103,8 @@ scaffolds stay consistent.
 ## Commits & releases
 
 - Small, conventional commits: `feat(ui): …`, `fix(tokens): …`, `docs: …`.
-- Every user-facing change gets a changeset (`pnpm changeset`). Maintainers run `pnpm version-packages`
-  then `pnpm release` (builds packages, then `changeset publish`).
+- Every user-facing change gets a changeset (`pnpm changeset`). Merging to `production` versions
+  packages (Version Packages PR) then publishes to npm via `.github/workflows/release.yml`.
 - Do not commit or publish unless the user asks.
 
 ## Roadmap note

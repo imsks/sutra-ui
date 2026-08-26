@@ -19,6 +19,7 @@ The first published release. Scope is deliberately tight.
 - [x] Ladle visual documentation
 - [x] Vitest + Testing Library + `jest-axe` coverage
 - [x] Changesets release flow
+- [x] Automated npm publish on merge to `production` (`.github/workflows/release.yml`)
 
 ## v0.1+ — Deferred (explicitly out of scope for v0.0.1)
 
@@ -41,8 +42,6 @@ Noted here so the intent is on record, not forgotten.
 - **Animation library integration** — v0.0.1 uses basic CSS transitions only.
 - **Storybook migration** — Ladle stories are Storybook-compatible; migrate if the ecosystem
   (a11y addon, interaction tests, autodocs) becomes worth the weight.
-- **Automated publishing** — a GitHub Action running Changesets on merge to `main`. v0.0.1 publishes
-  manually.
 
 ## Principles (do not drift from these)
 

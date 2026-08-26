@@ -10,27 +10,28 @@ Backlog for upcoming work on the `@sutra_ui` design system monorepo.
 
 ## CI/CD — publish
 
-- [ ] Add CI/CD automation for npm publish (`@sutra_ui/tokens`, `@sutra_ui/ui`)
-- [ ] Wire changesets publish into the pipeline
-- [ ] Store `NPM_TOKEN` (granular, `@sutra_ui/*` read/write, bypass 2FA) as a GitHub secret
+- [x] Add CI/CD automation for npm publish (`@sutra_ui/tokens`, `@sutra_ui/ui`)
+- [x] Wire changesets publish into the pipeline
+- [ ] Store `NPM_TOKEN` (granular, `@sutra_ui/*` read/write, bypass 2FA) as a GitHub secret, or
+      configure npm Trusted Publishing for `.github/workflows/release.yml`
 
 ## Auto-release workflow
 
-- [ ] Add GitHub Actions workflow: **auto-release.yml**
-- [ ] On merge to `main`: run `changeset version` when changesets exist
-- [ ] Publish to npm via `changeset publish` (or `pnpm release`)
-- [ ] Open/update release PR for version bumps when using the changesets bot pattern (optional)
+- [x] Add GitHub Actions workflow: **release.yml**
+- [x] On merge to `production`: run `changeset version` when changesets exist
+- [x] Publish to npm via `changeset publish` (`pnpm release`)
+- [x] Open/update release PR for version bumps (changesets/action)
 
 ## CI — test, lint, typecheck
 
-- [ ] Add GitHub Actions workflow: **ci.yml** (or split per concern)
-- [ ] Run on pull requests and pushes to `main`:
+- [x] Add GitHub Actions workflow: **ci.yml**
+- [x] Run on pull requests (to `main` / `production`) and pushes to `main`:
   - `pnpm install`
   - `pnpm build`
   - `pnpm test`
   - `pnpm lint`
   - `pnpm typecheck`
-- [ ] Fail the check if any step is red (match the gate in [CLAUDE.md](./CLAUDE.md))
+- [x] Fail the check if any step is red (match the gate in [CLAUDE.md](./CLAUDE.md))
 
 ## Notes
 
